@@ -16,6 +16,12 @@ class UW_Vanity_URL_Builder
   {
     add_action('admin_menu', array($this, 'admin_menu'));
     add_action('template_redirect', array($this, 'redirect'));
+    add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+    add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
+  }
+
+  function enqueue_scripts()
+  {
     wp_enqueue_script('backbone');
     wp_enqueue_script('jquery-ui-datepicker');
     wp_enqueue_style('jquery-ui-datepicker');
@@ -156,7 +162,7 @@ class UW_Vanity_URL_Builder
               $this.attr('disabled', true)
               return;
             }
-
+            console.log($this.closest('.redirect'))
           $this.closest('.redirect').remove()
 
         })
