@@ -160,9 +160,8 @@ class UW_Vanity_URL_Builder
 
             if ( $list.length === 1)  {
               $this.attr('disabled', true)
-              return;
+              //return;
             }
-            console.log($this.closest('.redirect'))
           $this.closest('.redirect').remove()
 
         })
