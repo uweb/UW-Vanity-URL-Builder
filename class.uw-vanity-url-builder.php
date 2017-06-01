@@ -15,7 +15,7 @@ class UW_Vanity_URL_Builder
   function __construct()
   {
     add_action('admin_menu', array($this, 'admin_menu'));
-    add_action('template_redirect', array($this, 'redirect'));
+    add_action('template_redirect', array($this, 'redirect'), 99);
     add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
     add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
   }
@@ -32,7 +32,6 @@ class UW_Vanity_URL_Builder
   {
     $vanity_urls = get_option('_vanity_urls');
     $pagename = get_query_var('pagename');
-
     if ( is_array($vanity_urls) && array_key_exists($pagename, $vanity_urls ) )
     {
       $forward_to = $vanity_urls[$pagename]['to'];
